@@ -1,10 +1,3 @@
-<% @photos.each do |photo| %>
-	<div>
-  	<%= photo.user_id %>
-  	<%= debug photo.photo_url %>
-  	<%= link_to 'Show', photo %>
-  	<%= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete %>
-	</div>	
-<% end %>
+<%= render @photos %>
 
 <%= link_to 'Upload a New Photo', new_photo_path if current_user %>

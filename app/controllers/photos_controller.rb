@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  before_filter :check_user, :only => [:destroy, :update, :edit]
+  
   # GET /photos
   # GET /photos.xml
   def index
@@ -34,17 +36,18 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
-    @photo = Photo.find(params[:id])
   end
 
   # POST /photos
   # POST /photos.xml
   def create
     @photo = Photo.new(params[:photo])
+    @photo.user = current_user
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to(@photo, :notice => 'Photo was successfully created.') }
+        format.html { redirect_to(photos_path, :notice => 'Photo was successfully created.') }
+        #format.html { redirect_to(@photo, :notice => 'Photo was successfully created.') }
         format.xml  { render :xml => @photo, :status => :created, :location => @photo }
       else
         format.html { render :action => "new" }
@@ -56,8 +59,6 @@ class PhotosController < ApplicationController
   # PUT /photos/1
   # PUT /photos/1.xml
   def update
-    @photo = Photo.find(params[:id])
-
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
         format.html { redirect_to(@photo, :notice => 'Photo was successfully updated.') }
@@ -72,12 +73,17 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.xml
   def destroy
-    @photo = Photo.find(params[:id])
     @photo.destroy
 
     respond_to do |format|
       format.html { redirect_to(photos_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  def check_user
+    @photo = Photo.find(params[:id])
+    current_user == @photo.user
   end
 end
