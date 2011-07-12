@@ -9,7 +9,7 @@
 <body>
   
   <% if current_user %>
-    Yo, <%= current_user.name %>
+    Yo, <%= link_to current_user.name, user_path(current_user.id) %>
     <%= image_tag current_user.picture_url %>
     <%= link_to "Sign Out", logout_path %>
   <% else %>
