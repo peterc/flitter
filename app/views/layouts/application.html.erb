@@ -7,16 +7,22 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  
-  <% if current_user %>
-    Yo, <%= current_user.name %>
-    <%= image_tag current_user.picture_url %>
-    <%= link_to "Sign Out", logout_path %>
-  <% else %>
-    <%= link_to "Sign in with Twitter", auth_request_path(service: "twitter") %>
-  <% end %>
-  
-  <%= yield %>
+	<div id="page">
+  	<div id="header">
+			<div class="logo">Flitter</div>
+  		<% if current_user %>
+  		  Yo, <%= current_user.name %>
+  		  <%= image_tag current_user.picture_url %>
+  		  <%= link_to "Sign Out", logout_path %>
+  		<% else %>
+  		  <%= link_to "Sign in with Twitter", auth_request_path(service: "twitter") %>
+  		<% end %>
+		</div>
+  	
+		<div id="main">
+  		<%= yield %>
+		</div>
+	</div>
   
 </body>
 </html>

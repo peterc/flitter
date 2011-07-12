@@ -1,6 +1,7 @@
 <div class="photo">
- 	<%= photo.user.login %>
- 	<%= image_tag photo.photo_url %>
- 	<!-- %= link_to 'Show', photo % -->
- 	<%= link_to('Destroy', photo, :confirm => 'Are you sure?', :method => :delete) if photo.user == current_user %>
+ 	<div class="user"><%= photo.user.login %><!-- %= link_to photo.user.login, photo.user % --></div>
+ 	<div class="image"><%= link_to image_tag(photo.photo_url), photo %></div>
+	<div class="tools">
+ 		<%= link_to('Destroy', photo, :confirm => 'Are you sure?', :method => :delete) if photo.user == current_user %>
+	</div>
 </div>	

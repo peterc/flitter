@@ -10,3 +10,25 @@ body {
 	padding: 12px;
 	background-color: #eee;
 }
+
+.photo .name {
+	width: 80px;
+	float: left;
+}
+
+.photo .image, .photo .tools {
+	margin-left: 100px;
+}
+
+.photo .tools { font-family: verdana; font-size: 11px; }
+
+#header {
+	text-align: right;
+}
+
+.logo { float: left; font-size: 24px; font-weight: bold; }
+
+#page {
+	width: 940px;
+	margin: 18px auto;
+}
