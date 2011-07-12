@@ -10,8 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110712194122) do
-
+ActiveRecord::Schema.define(:version => 20110712193953) do
   create_table "login_accounts", :force => true do |t|
     t.string   "type"
     t.integer  "user_id"
@@ -22,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20110712194122) do
     t.string   "access_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
   end
 
   add_index "login_accounts", ["type"], :name => "index_login_accounts_on_type"
