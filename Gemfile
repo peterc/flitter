@@ -12,6 +12,8 @@ gem 'carrierwave'
 # Facebook and Twitter logins
 gem 'omnisocial'
 
+gem 'rmagick'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

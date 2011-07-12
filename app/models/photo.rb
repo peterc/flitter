@@ -1,3 +1,5 @@
 class Photo < ActiveRecord::Base
-  belongs_to :user_id
+  mount_uploader :avatar, AvatarUploader
+  
+  belongs_to :user
 end

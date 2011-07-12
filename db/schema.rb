@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110712190633) do
+ActiveRecord::Schema.define(:version => 20110712194122) do
 
   create_table "login_accounts", :force => true do |t|
     t.string   "type"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(:version => 20110712190633) do
 
   add_index "login_accounts", ["type"], :name => "index_login_accounts_on_type"
   add_index "login_accounts", ["user_id"], :name => "index_login_accounts_on_user_id"
+
+  create_table "photos", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "photo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "remember_token"
